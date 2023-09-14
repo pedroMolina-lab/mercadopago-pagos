@@ -43,9 +43,10 @@ async function Posthandler(req: NextApiRequest, res: NextApiResponse, token) {
         "unit_price": product.price
       }
     ],
+    "notification_url": "vercel-public-directory-two.vercel.app",
     "back_urls": {
       "success": "https://apx.school.com",
-      "notification_url": "https://webhook.site/7e54c7ae-1dd4-4f46-b1ae-585b92423e40"
+      
     },
   })
   
