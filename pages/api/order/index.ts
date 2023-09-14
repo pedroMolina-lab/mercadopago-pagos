@@ -8,7 +8,7 @@ import { CreatePreference } from "lib/mercadopago";
 const products = {
     1234:{
         "title": "silla",
-        "price": 1000
+        "price": 100
     }
 }
 
@@ -29,8 +29,8 @@ async function Posthandler(req: NextApiRequest, res: NextApiResponse, token) {
     
     
    const pref = await CreatePreference({
-    
-    "external_reference": order.id,
+        
+    external_reference: order.id,
     
     items: [
       {
@@ -43,12 +43,13 @@ async function Posthandler(req: NextApiRequest, res: NextApiResponse, token) {
         "unit_price": product.price
       }
     ],
-    "notification_url": "mercadopago-pagos.vercel.app/api/webhooks/mercadopago?",
+    "notification_url": "https://webhook.site/7e54c7ae-1dd4-4f46-b1ae-585b92423e40",
     "back_urls": {
       "success": "https://apx.school.com",
       
     },
   })
+      
   
   res.send(pref.init_point) 
 }
