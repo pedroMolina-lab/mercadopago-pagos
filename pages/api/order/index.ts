@@ -43,7 +43,7 @@ async function Posthandler(req: NextApiRequest, res: NextApiResponse, token) {
         "unit_price": product.price
       }
     ],
-    "notification_url": "vercel-public-directory-two.vercel.app",
+    "notification_url": "vercel-public-directory-two.vercel.app/api/webhooks/mercadopago?",
     "back_urls": {
       "success": "https://apx.school.com",
       
