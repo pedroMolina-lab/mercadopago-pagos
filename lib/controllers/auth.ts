@@ -3,9 +3,7 @@ import { User } from "lib/users";
 import gen from "random-seed";
 import addMinutes from "date-fns/addMinutes";
 import { Resend } from "resend";
-import { sendEmail } from "lib/resend";
 
-const resend = new Resend("re_a97C78X3_9bD8LHD4eEHLTtHRuygMZKSZ");
 
 var seed = "aasd";
 var random = gen.create(seed);
