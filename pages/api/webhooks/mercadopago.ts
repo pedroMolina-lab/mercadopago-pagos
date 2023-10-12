@@ -1,6 +1,13 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getMerchantOrder } from "lib/mercadopago";
 import { Order } from "models/order";
+import { sendEmailMP } from "lib/resend";
+import { User } from "models/users";
+
+  
+
+
+
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
     
@@ -19,7 +26,14 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       await myOrder.pull()
       myOrder.data.status = "closed"
       await myOrder.push()
-      console.log("tu pago fue aceptado");
+
+      const user = new User(myOrder.data.userId)
+      await user.pull()
+      
+      const email = user.data.email
+
+
+      await sendEmailMP(email)
       
     }
   }

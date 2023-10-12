@@ -11,3 +11,14 @@ export async function sendEmail(email, code) {
   });
   return envioEmail;
 }
+
+
+export async function sendEmailMP(email) {
+  const envioEmail = await resend.emails.send({
+    from: 'onboarding@resend.dev',
+    to: email,
+    subject: "estado de pago",
+    html: "tu pago fue aceptado"
+  });
+  return envioEmail;
+}

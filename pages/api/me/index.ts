@@ -6,6 +6,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse, token) {
     const user = new User(token.userId)
     
     await user.pull()
+    console.log(user.data.email);
+    
   res.send(user.data);
 }
 
