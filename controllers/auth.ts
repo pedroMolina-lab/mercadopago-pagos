@@ -3,7 +3,7 @@ import { User } from "models/users";
 import gen from "random-seed";
 import addMinutes from "date-fns/addMinutes";
 import { Resend } from "resend";
-
+import { sendEmail } from "lib/resend";
 
 var seed = "aasd";
 var random = gen.create(seed);
@@ -45,8 +45,8 @@ export async function sendCode(email: string, name: string, lastName: string, ad
   auth.data.name = name
   auth.data.lastName = lastName
   await auth.push();
-  // const envioEmail = await sendEmail(email, code.toString());
-  console.log(email, code);
+  await sendEmail(email, code.toString());
+  // console.log(email, code);
   
   return true;
 }
