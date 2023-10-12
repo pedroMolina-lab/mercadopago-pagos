@@ -1,4 +1,4 @@
-import { firestore } from "./firestore";
+import { firestore } from "../lib/firestore";
 import isAfter from "date-fns/isAfter";
 
 const collection = firestore.collection("auth");
@@ -29,6 +29,7 @@ export class Auth {
     if (results.docs.length) {
       const first = results.docs[0];
       const newAuth = new Auth(first.id);
+      
       newAuth.data = first.data();
       return newAuth;
     } else {
@@ -38,9 +39,10 @@ export class Auth {
   static async createNewAuth(data) {
     const newUserSnap = await collection.add(data);
     const newUser = new Auth(newUserSnap.id);
-    newUser.data = newUserSnap;
+    newUser.data = data;
     return newUser;
   }
+
 
   static async findByEmailAndCode(email: string, code: number) {
     const cleanEmail = email.trim().toLowerCase();
@@ -48,23 +50,20 @@ export class Auth {
       .where("email", "==", cleanEmail)
       .where("code", "==", code)
       .get();
-        if(results.empty){
-            return null
-        }else{
-            const doc = results.docs[0]
-            const auth = new Auth(doc.id)
-            auth.data = doc.data()            
-            return auth
-        }
-        
+    if (results.empty) {
+      return null;
+    } else {
+      const doc = results.docs[0];
+      const auth = new Auth(doc.id);
+      auth.data = doc.data();
+      return auth;
     }
-    isCodeExpired(){
-        const now = new Date()
-        const expires = this.data.expires.toDate()
-        console.log(now, expires);
+  }
+  isCodeExpired() {
+    const now = new Date();
+    const expires = this.data.expires.toDate();
+    console.log(now, expires);
 
-        return isAfter(now, expires)
-        
-    }
-    
+    return isAfter(now, expires);
+  }
 }

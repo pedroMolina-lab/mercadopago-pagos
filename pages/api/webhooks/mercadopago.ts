@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getMerchantOrder } from "lib/mercadopago";
-import { Order } from "lib/models/order";
+import { Order } from "models/order";
 
 export default async function (req: NextApiRequest, res: NextApiResponse) {
     

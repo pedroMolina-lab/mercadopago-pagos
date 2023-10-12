@@ -1,4 +1,4 @@
-import { firestore } from "./firestore";
+import { firestore } from "../lib/firestore";
 
 const collection = firestore.collection("users");
 export class User {
@@ -20,6 +20,12 @@ export class User {
     console.log("soy el data",this.data);
     
   }
+
+  static async getById(id: string) {
+    const user = new User(id)
+    await user.pull()
+    return user
+}
 
   static async createNewUser(data) {
     const newUserSnap = await collection.add(data);
