@@ -43,7 +43,7 @@ export async function createOrder(userId: string, productId:string, aditionalInf
         "success": "https://apx.school.com",
         
     },
-    notification_url: "https://webhook.site/c4ad5560-9dbd-4c60-bdcb-11fc838308f6",
+    notification_url: "vercel-public-directory-two.vercel.app/webhooks/mercadopago",
   })
       
   
