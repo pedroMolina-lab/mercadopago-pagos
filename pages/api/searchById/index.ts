@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import method from "micro-method-router"
 import * as yup from "yup"
 import { searchProductById } from "controllers/products";
+import corsMiddleware from "../middleware-cors";
 
 
 const idSchema =yup
@@ -29,5 +30,9 @@ async function searchByid(req: NextApiRequest, res: NextApiResponse) {
   const handler = method({
     get: searchByid
   });
+
+  const corsHandler = async (req: NextApiRequest, res: NextApiResponse) => {
+    return await corsMiddleware(req, res, handler);
+  };
   
-  export default handler;
+  export default corsHandler;
