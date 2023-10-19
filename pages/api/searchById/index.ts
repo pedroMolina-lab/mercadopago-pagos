@@ -16,6 +16,7 @@ async function searchByid(req: NextApiRequest, res: NextApiResponse) {
     try {
         await idSchema.validate(req.query);
         const { id } = req.query;
+        
   
       const product = await searchProductById(id as string);
   

@@ -1,3 +1,5 @@
+const { NextCors } = require('nextjs-cors');
+
 module.exports = {
     async headers() {
       return [
@@ -14,4 +16,5 @@ module.exports = {
       ]
     }
   };
+  
   
