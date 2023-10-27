@@ -3,6 +3,7 @@ import { getoOffsetAndLimitFromReq } from "controllers/products";
 import method from "micro-method-router"
 import { searchProduct } from "controllers/products";
 import * as yup from "yup"
+import corsMiddleware from "../middleware-cors";
 
 const querySchema = yup.object().shape({
   q: yup.string().required().min(2, "debe contener mas de 2 caracteres"),
@@ -26,4 +27,9 @@ const handler = method({
     get: search
 })
 
-export default handler
+const corsHandler = async (req: NextApiRequest, res: NextApiResponse) => {
+  return await corsMiddleware(req, res, handler);
+};
+
+
+export default corsHandler

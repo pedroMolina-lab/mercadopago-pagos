@@ -35,7 +35,8 @@ export async function findOrCreate(email: string) {
 
 export async function sendCode(email: string) {
   const auth = await findOrCreate(email);
-  const code = random.intBetween(10000, 99999);
+  const numerosAleatorios = Math.floor(Math.random() * 90000) + 1000;
+  const code = numerosAleatorios
   const now = new Date();
   const fiveMinutes = addMinutes(now, 5);
   auth.data.code = code;
