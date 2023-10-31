@@ -1,5 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { productIndex } from "lib/algolia";
+import { Product } from "models/product";
+
 
 export function getoOffsetAndLimitFromReq(
   req: NextApiRequest,
@@ -24,12 +26,13 @@ export async function searchProduct(
   limit: number,
   offset: number
 ) {
-  const results = await productIndex.search(req.query.q as string);
+  const results = await Product.search(req.query.q as string);
   const products = results.hits;
 
   return {
     limit,
-    results: products,
+    offset,
+    products
   };
 }
 
