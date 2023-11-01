@@ -47,3 +47,10 @@ export async function searchProductById(id: string) {
     throw new Error(`No se encontró ningún producto con el ID: ${id}`);
   }
 }
+
+export async function getAllProducts() {
+  const results = await productIndex.search(""); 
+
+  return results.hits;
+}
+
