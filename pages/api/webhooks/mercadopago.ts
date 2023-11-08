@@ -27,7 +27,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
       await sendEmailMP(email);
     }else{
-      "el pago no ha sido aprobado"
+      console.log("el pago no a sido aprobado");
+      
     }
   }
 
