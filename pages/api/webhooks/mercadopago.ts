@@ -13,6 +13,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     if (order.order_status == "paid") {
       const orderId = order.external_reference;
       const myOrder = new Order(orderId);
+      console.log(myOrder);
+      
       await myOrder.pull();
       myOrder.data.status = "closed";
       await myOrder.push();
@@ -24,6 +26,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       const email = user.data.email;
 
       await sendEmailMP(email);
+    }else{
+      "el pago no ha sido aprobado"
     }
   }
 
