@@ -43,7 +43,7 @@ export async function sendCode(email: string) {
   auth.data.expires = fiveMinutes;
   await auth.push();
   await sendEmail(email, code.toString());
-  // console.log(email, code);
+  console.log(email, code);
   
   return true;
 }

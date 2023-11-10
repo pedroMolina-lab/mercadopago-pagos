@@ -20,7 +20,7 @@ export async function createOrder(userId: string, productId:string, aditionalInf
         aditionalInfo: aditionalInfo,
         productId,
         userId: userId,
-        status: "pending"
+        status: "pendiente de pago"
     })
     
     

@@ -16,7 +16,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       console.log(myOrder);
       
       await myOrder.pull();
-      myOrder.data.status = "closed";
+      myOrder.data.status = "pago aceptado";
       await myOrder.push();
 
       const user = new User(myOrder.data.userId);
