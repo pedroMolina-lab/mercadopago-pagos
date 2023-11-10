@@ -40,7 +40,7 @@ export async function createOrder(userId: string, productId:string, aditionalInf
       }
     ],
     "back_urls": {
-        "success": "https://apx.school.com",
+        "success": "https://e-commerce-omega-five.vercel.app/",
         
     },
     notification_url: "https://mercadopago-pagos.vercel.app/api/webhooks/mercadopago" 
