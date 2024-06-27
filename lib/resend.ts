@@ -15,7 +15,7 @@ export async function sendEmail(email, code) {
 
 export async function sendEmailMP(email) {
   const envioEmail = await resend.emails.send({
-    from: 'onboarding@resend.dev',
+    from: 'ononboarding@pedromolina.online',
     to: email,
     subject: "estado de pago",
     html: "tu pago fue aceptado"
